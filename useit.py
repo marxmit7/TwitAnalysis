@@ -31,13 +31,12 @@ json_file.close()
 model  = model_from_json(loaded_model_json)
 model.load_weights('twit_model.h5')
 
-
-while 1:
+while True:
     eval_sentence = input('Input a twit to be evaluated  :  ')
     if len(eval_sentence) == 0:
         break
 
     test_arr = text_to_index_array(eval_sentence)
-    input = tokenizer.sequences_to_matrix([test_arr],mode ='binary')
-    pred = model.predict(input)
-    print("%s sentiment %0.2f%% confidence \n\n" %(labels[np.argmax(pred)],pred[0][np.argmax(pred)]*100))
+    _input_ = tokenizer.sequences_to_matrix([test_arr],mode ='binary')
+    pred = model.predict(_input_)
+    print("%s sentiment %0.2f%% confidence \n" %(labels[np.argmax(pred)],pred[0][np.argmax(pred)]*100))
