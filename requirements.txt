@@ -1,0 +1,4 @@
+keras
+tensorflow
+numpy 
+protobuf==3.3.0
